@@ -33,8 +33,18 @@
       ]
     },
     "media": {
-      "description": "The logo/illustration image of the key.",
-      "$ref": "#/definitions/mediaID"
+      "description": "Logo/illustration images of the key.",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/mediaID"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/mediaID"
+          }
+        }
+      ]
     },
     "description": {
       "description": "Short description of the key (valid html).",
@@ -337,8 +347,7 @@
       "description": "String formed as a url, or an external resource.",
       "oneOf": [
         {
-          "type": "string",
-          "format": "uri"
+          "type": "string"
         },
         {
           "$ref": "#/definitions/externalResource"
@@ -348,47 +357,47 @@
     "taxonID": {
       "description": "String used as an internal ID for a taxon. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^taxon:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "characterID": {
       "description": "String used as an internal ID for a character. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^character:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "stateID": {
       "description": "String used as an internal ID for a state. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^state:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "personID": {
       "description": "String used as an internal ID for a person. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^person:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "organizationID": {
       "description": "String used as an internal ID for an organization. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^organization:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "serviceID": {
       "description": "String used as an internal ID for a service. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^service:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "statementID": {
       "description": "String used as an internal ID for a statement. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^statement:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "userRequirementID": {
       "description": "String used as an internal ID for a user requirement. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^requirement:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "mediaID": {
       "description": "String used as an internal ID for a media element. Lowercase alphanumerical and underscores are allowed.",
       "type": "string",
-      "pattern": "^media:[a-z0-9_]+$"
+      "pattern": "^[a-z0-9_:]+$"
     },
     "mediaFile": {
       "type": "object",
@@ -573,8 +582,7 @@
         },
         "email": {
           "description": "Email address of the person",
-          "type": "string",
-          "format": "email"
+          "type": "string"
         },
         "url": {
           "description": "Hyperlink to more information on the person (valid url).",
@@ -995,11 +1003,11 @@
           "description": "Internally unique id of the statement.",
           "$ref": "#/definitions/statementID"
         },
-        "taxon": {
+        "taxonId": {
           "description": "Id of the taxon this statement is about.",
           "$ref": "#/definitions/taxonID"
         },
-        "character": {
+        "characterId": {
           "description": "Id of the character this statement is about.",
           "$ref": "#/definitions/characterID"
         },
